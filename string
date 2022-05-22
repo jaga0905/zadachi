@@ -1,0 +1,23 @@
+import java.util.Scanner;
+class Main {
+    public static void main(String[] args) throws Exception {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the name of the task and the time to complete it:");
+        String input = scanner.nextLine();
+        int startPos = input.indexOf("started in");
+        String startTimeString = input.substring(startPos + 10, startPos + 13);
+        startTimeString = startTimeString.trim();
+        int startTime = Integer.parseInt(startTimeString);
+        int endPos = input.indexOf("ended in");
+        String endTimeString = input.substring(endPos + 8, endPos + 11 );
+        endTimeString = endTimeString.trim();
+        int endTime = Integer.parseInt(endTimeString);
+        int result = endTime - startTime;
+        if(result < 0){
+            System.out.println("The format of the entered data is incorrect");
+        }
+        else{
+            System.out.println("The task will require: " + result);
+        }
+    }
+}
